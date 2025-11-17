@@ -19,8 +19,11 @@ function ListLivre() {
   const[showForm,setShowForm]=useState(false);
   const[tri,setTri]=useState("");
   const[search,setSearch]=useState("");
-  const[currentPage,setCurrentPage]=useState(1);
-  const livresParPage=5;
+
+
+  const goToPage=(page)=>{
+    setCurrentPage(page)
+  }
 
   const genres=["All", ...new Set(livres.map(livre => livre.genre))];
 
@@ -38,10 +41,12 @@ function ListLivre() {
   if (tri === "noteAsc") livresFiltres.sort((a,b) => a.rating - b.rating);
   if (tri === "noteDesc") livresFiltres.sort((a,b) => b.rating - a.rating);
 
-  const indexLast = currentPage * livresParPage;
-  const indexFirst = indexLast - livresParPage;
-  const currentLivres = livresFiltres.slice(indexFirst, indexLast);
-  const totalPages = Math.ceil(livresFiltres.length / livresParPage);
+  cont[currentPage,setCurrentPage]=useState(1);
+  const livresParPage=5;
+  const indexLast=currentPage*livresParPage;
+  const indexFirst=indexLast-livresParPage;
+  const currentLivres=livresFiltres.slice(indexFirst,indexLast);
+  const totalPages=Math.ceil(livresFiltres.length/livresParPage);
 
   const AjoutLivre = (nouveauLivre) => {
     setLivres([...livres, { ...nouveauLivre, img: img1, genre: "Autre" }]); 
@@ -67,7 +72,7 @@ function ListLivre() {
           <option key={index} value={genre}>{genre}</option>
         ))}
       </select>
-       {/* 4) Tri */}
+       {/* tri */}
       <select 
         value={tri} 
         onChange={(e) => setTri(e.target.value)}

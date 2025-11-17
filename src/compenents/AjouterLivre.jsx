@@ -1,5 +1,15 @@
 import React, { useState } from "react";
 
+const Livres = [ 
+  { title: "1984", author: "George Orwell", publicationYear: 1949, genre: "Dystopian", rating: 4.8, img: img1, price: 150 }, 
+  { title: "To Kill a Mockingbird", author: "Harper Lee", publicationYear: 1960, genre: "Classic", rating: 4.9, img: img1, price: 100 }, 
+  { title: "The Great Gatsby", author: "F. Scott Fitzgerald", publicationYear: 1925, genre: "Classic", rating: 4.4, img: img1, price: 90 }, 
+  { title: "Pride and Prejudice", author: "Jane Austen", publicationYear: 1813, genre: "Romance", rating: 4.7, img: img1, price: 100 }, 
+  { title: "Moby-Dick", author: "Herman Melville", publicationYear: 1851, genre: "Adventure", rating: 4.1, img: img1, price: 110 }, 
+  { title: "War and Peace", author: "Leo Tolstoy", publicationYear: 1869, genre: "Historical Fiction", rating: 4.5, img: img1, price: 130 }, 
+  { title: "The Alchemist", author: "Paulo Coelho", publicationYear: 1988, genre: "Philosophical Fiction", rating: 4.7, img: img1, price: 95 }
+];
+
 function AjouterLivre({ onAdd }) {
   const[title,setTitle]=useState("");
   const[author,setAuthor]=useState("");
@@ -9,7 +19,7 @@ function AjouterLivre({ onAdd }) {
   const[price,setPrice]=useState("");
   const[error,setError]=useState("");
 
-  const genresDisponibles = ["Fantasy","Dystopian","Classic","Romance","Adventure","Historical Fiction","Philosophical Fiction"];
+  const genresDisponibles =[...new Set(livres.map(livre=>livre.genre))];
 
   const checkAll=(e)=> {
     e.preventDefault();
