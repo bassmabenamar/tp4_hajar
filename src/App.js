@@ -1,19 +1,14 @@
 
-import './App.css';
-import React from 'react';
+import React from "react";
+import MainPage from "./components/MainPage"
 
-
-import Recherche from "./props/Recherche";
-
-function App() {
+function App(){
   return (
-    <div className="App">
-     
-      <Recherche/>
+    <div>
 
-      
-    </div>
-  );
+  <MainPage />
+</div>
+)
 }
 
 export default App;
